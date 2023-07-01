@@ -10,18 +10,26 @@ dotenv.config();
 
 app.get('/executar-teste', async (req, res) => {
   try {
-    const token = await runTest();
-    res.json({ token });
+    const dados = await runTest();
+
+    res.json({
+      sucesso: true,
+      token: dados.data.token,
+    });
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao executar o teste.' });
+    console.error(error)
+    res.status(500).json({
+      sucesso: false,
+      error: 'Erro ao executar o teste.',
+    });
   }
 });
 
 app.get('/', async (req, res) => {
-    return res.json({
-      success:true,
-      message:"Sucesso."
-    })
+  return res.json({
+    success: true,
+    message: "Sucesso."
+  })
 });
 
 app.listen(3000, () => {
