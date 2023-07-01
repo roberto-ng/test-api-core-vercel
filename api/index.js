@@ -2,16 +2,9 @@ import express from 'express';
 import supertest from 'supertest';
 import dotenv from 'dotenv';
 import { runTest } from '../login/tk_project.js'
-import supertest from "supertest";
-import dotenv from 'dotenv'
-import { describe, it } from 'mocha'; // Importe a biblioteca Mocha
-dotenv.config()
-
-const request = supertest('https://api.norwaydigital.com.br/prod/v1');
-
 
 const app = express();
-
+const request = supertest(app);
 
 dotenv.config();
 
