@@ -31,27 +31,6 @@ app.get('/', async (req, res) => {
     })
 });
 
-app.get('/test', async (req, res) => {
-  describe('Users', () => {
-
-    it('POST /TK-PROJECT', (done) => {
-      let data = {
-        "secretKey": process.env.SECRET_KEY,
-        "boundId": process.env.BOUND_ID
-      }
-
-      request.post(`/oauth/projects`).send(data).end((err, response) => {
-        if (err) {
-          done(err);
-        } else {
-          const token = response.body.data.token;
-          done();
-        }
-      });
-    });
-  });
-});
-
 app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');
 });
